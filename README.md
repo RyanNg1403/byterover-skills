@@ -33,7 +33,7 @@ Skills extend Byterover's core capabilities with specialized workflows:
 graph TB
     A[Byterover Core] --> B[byterover-notion-sync]
     A --> C[Future Skills]
-    B --> D[Memories ↔️ Notion]
+    B --> D["Memories ↔ Notion"]
     C --> E[Meetings, GitHub, Code]
 ```
 
@@ -86,7 +86,7 @@ Bidirectional knowledge synchronization between Byterover memories and Notion do
 
 ```mermaid
 graph TB
-    subgraph "Memories → Notion"
+    subgraph mem2notion["Memories → Notion"]
         A[Byterover Memories] -->|Multi-query| B[Aggregate Context]
         B -->|Format Selection| C{Document Type}
         C -->|Timeline-based| D[Implementation Report]
@@ -99,7 +99,7 @@ graph TB
         G --> H
     end
 
-    subgraph "Notion → Memories"
+    subgraph notion2mem["Notion → Memories"]
         I[Notion Page] -->|Fetch| J[Analyze Structure]
         J -->|Chunk| K[Logical Sections]
         K -->|Format| L[Memory Templates]
@@ -130,19 +130,19 @@ sequenceDiagram
     participant B as Byterover
     participant N as Notion
 
-    Note over U,N: Memories → Notion
-    U->>C: "Create implementation report"
+    Note over U,N: Memories to Notion
+    U->>C: Create implementation report
     C->>B: Multi-query memories
     B-->>C: Aggregate results
-    C->>C: Select format & structure
+    C->>C: Select format and structure
     C->>N: Create Notion page
     N-->>U: Return page link
 
-    Note over U,N: Notion → Memories
-    U->>C: "Import Notion page"
+    Note over U,N: Notion to Memories
+    U->>C: Import Notion page
     C->>N: Fetch page content
     N-->>C: Return structured content
-    C->>C: Chunk & format
+    C->>C: Chunk and format
     C->>B: Store memories
     B-->>U: Confirm storage
 ```
