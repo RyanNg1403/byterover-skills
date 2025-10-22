@@ -1,6 +1,6 @@
 # Byterover Skills
 
-A collection of specialized Claude Code skills for working with the [Byterover MCP Server](https://github.com/ngalvare/byterover-mcp). These skills extend Byterover's memory and knowledge management capabilities with structured workflows, advanced documentation features, and seamless integrations.
+A collection of specialized Claude Code skills for working with the [Byterover MCP Server](https://www.byterover.dev/). These skills extend Byterover's memory and knowledge management capabilities with structured workflows, advanced documentation features, and seamless integrations.
 
 ## What are Byterover Skills?
 
@@ -48,12 +48,10 @@ Byterover is a powerful memory system for AI agents, allowing them to store and 
 ### Prerequisites
 
 1. **Claude Code** - Install from [claude.ai/claude-code](https://claude.ai/claude-code)
-2. **Byterover MCP Server** - Set up from [ngalvare/byterover-mcp](https://github.com/ngalvare/byterover-mcp)
-3. (Optional for byterover-notion-sync) **Notion MCP Server** - Set up from [Notion MCP documentation](https://www.notion.so/help/mcp)
+2. **Byterover MCP Server** - Set up from [byterover](https://www.byterover.dev/)
+3. (Optional for byterover-notion-sync) **Notion MCP Server** - Set up from [Notion MCP documentation](https://developers.notion.com/docs/mcp)
 
 ### Installing Skills
-
-#### Option 1: Clone and Copy (Recommended)
 
 1. **Clone this repository**:
    ```bash
@@ -62,8 +60,6 @@ Byterover is a powerful memory system for AI agents, allowing them to store and 
    ```
 
 2. **Copy desired skill(s) to your Claude Code skills directory**:
-
-   **On macOS/Linux**:
    ```bash
    # Copy individual skill
    cp -r byterover-notion-sync ~/.claude/skills/
@@ -72,30 +68,10 @@ Byterover is a powerful memory system for AI agents, allowing them to store and 
    cp -r */ ~/.claude/skills/
    ```
 
-   **On Windows**:
-   ```powershell
-   # Copy individual skill
-   Copy-Item -Recurse byterover-notion-sync $env:USERPROFILE\.claude\skills\
-
-   # Or copy all skills
-   Get-ChildItem -Directory | Copy-Item -Recurse -Destination $env:USERPROFILE\.claude\skills\
-   ```
-
 3. **Verify installation**:
    ```bash
-   # On macOS/Linux
    ls ~/.claude/skills/byterover-notion-sync
-
-   # On Windows
-   dir $env:USERPROFILE\.claude\skills\byterover-notion-sync
    ```
-
-#### Option 2: Manual Download
-
-1. Download individual skill folders from this repository
-2. Place them in your Claude Code skills directory:
-   - **macOS/Linux**: `~/.claude/skills/`
-   - **Windows**: `%USERPROFILE%\.claude\skills\`
 
 ### Verifying Installation
 
@@ -213,8 +189,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Acknowledgments
 
 - Built for [Claude Code](https://claude.ai/claude-code) by Anthropic
-- Powered by [Byterover MCP Server](https://github.com/ngalvare/byterover-mcp)
-- Integrations with [Notion MCP](https://www.notion.so/help/mcp)
+- Powered by [Byterover MCP Server](https://www.byterover.dev/)
+- Integrations with [Notion MCP](https://developers.notion.com/docs/mcp)
 
 ---
 
