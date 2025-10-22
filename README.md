@@ -1,45 +1,41 @@
 # Byterover Skills
 
-A collection of specialized Claude Code skills for working with the [Byterover MCP Server](https://www.byterover.dev/). These skills extend Byterover's memory and knowledge management capabilities with structured workflows, advanced documentation features, and seamless integrations.
+A collection of specialized Claude Code skills for enhanced knowledge management with [Byterover MCP Server](https://www.byterover.dev/).
 
-## What are Byterover Skills?
+## Overview
 
-Byterover is a powerful memory system for AI agents, allowing them to store and retrieve knowledge across conversations. These skills build on top of Byterover's foundation to provide:
+### What is Byterover?
 
-- **Structured workflows** for common documentation tasks
-- **Bidirectional integrations** with tools like Notion
-- **Specialized formats** for reports, PRDs, architecture docs, and more
-- **Best practices** for knowledge capture and retrieval
+Byterover is an AI memory system that enables persistent knowledge storage and retrieval across conversations. It allows AI agents to:
 
-## Available Skills
+- Store programming facts, patterns, and solutions
+- Retrieve relevant context from past conversations
+- Build cumulative knowledge over time
+- Share knowledge across different projects
 
-### 🔄 byterover-notion-sync
-
-**Bidirectional knowledge synchronization between Byterover memories and Notion documentation.**
-
-**Use when you need to**:
-- Convert Byterover memories into structured Notion documentation (implementation reports, PRDs, feature docs, architecture docs)
-- Import Notion pages into searchable Byterover memories
-- Create timelines and reports from development memories
-- Document features and architectures based on implementation knowledge
-
-**Key capabilities**:
-- **4 Documentation Formats**: Implementation reports with timelines, PRDs, feature documentation, technical architecture docs
-- **Smart format selection**: Automatically determines appropriate format based on content
-- **Multi-query retrieval**: Intelligently queries memories multiple times with variations for comprehensive context
-- **Logical chunking**: Breaks Notion content into optimal memory sizes (200-800 words)
-- **Structure preservation**: Maintains code blocks, tables, headings, and nested pages
-- **Bidirectional traceability**: Links between Notion pages and Byterover memories
-
-**Example use cases**:
-```
-"Create an implementation report on the authentication system from July 10-15"
-"Turn our notification system discussions into a PRD"
-"Document the microservices architecture"
-"Import the API documentation from Notion into memories"
+```mermaid
+graph LR
+    A[AI Conversations] -->|Store| B[Byterover Memory]
+    B -->|Retrieve| C[Future Conversations]
+    C -->|Store| B
 ```
 
-[View full documentation →](byterover-notion-sync/)
+### What are Byterover Skills?
+
+Skills extend Byterover's core capabilities with specialized workflows:
+
+- **Structured documentation generation** (reports, PRDs, architecture docs)
+- **Bidirectional integrations** (Notion, GitHub, etc.)
+- **Advanced knowledge synthesis** (aggregation, formatting, analysis)
+- **Automated workflows** for common knowledge management tasks
+
+```mermaid
+graph TB
+    A[Byterover Core] --> B[byterover-notion-sync]
+    A --> C[Future Skills]
+    B --> D[Memories ↔️ Notion]
+    C --> E[Meetings, GitHub, Code]
+```
 
 ---
 
@@ -48,135 +44,163 @@ Byterover is a powerful memory system for AI agents, allowing them to store and 
 ### Prerequisites
 
 1. **Claude Code** - Install from [claude.ai/claude-code](https://claude.ai/claude-code)
-2. **Byterover MCP Server** - Set up from [byterover](https://www.byterover.dev/)
-3. (Optional for byterover-notion-sync) **Notion MCP Server** - Set up from [Notion MCP documentation](https://developers.notion.com/docs/mcp)
+2. **Byterover MCP Server** - Set up from [byterover.dev](https://www.byterover.dev/)
+3. **Notion MCP Server** (optional) - Required for byterover-notion-sync ([setup guide](https://developers.notion.com/docs/mcp))
 
 ### Installing Skills
 
-1. **Clone this repository**:
-   ```bash
-   git clone https://github.com/RyanNg1403/byterover-skills.git
-   cd byterover-skills
-   ```
+Clone and copy skills to your Claude Code directory:
 
-2. **Copy desired skill(s) to your Claude Code skills directory**:
-   ```bash
-   # Copy individual skill
-   cp -r byterover-notion-sync ~/.claude/skills/
+```bash
+# Clone repository
+git clone https://github.com/RyanNg1403/byterover-skills.git
+cd byterover-skills
 
-   # Or copy all skills
-   cp -r */ ~/.claude/skills/
-   ```
+# Copy individual skill
+cp -r byterover-notion-sync ~/.claude/skills/
 
-3. **Verify installation**:
-   ```bash
-   ls ~/.claude/skills/byterover-notion-sync
-   ```
+# Or copy all skills
+cp -r */ ~/.claude/skills/
+```
 
-### Verifying Installation
+### Verify Installation
 
-After installation, skills should automatically be available in Claude Code. You can verify by:
+Start Claude Code and ask: "What Byterover skills are available?"
 
-1. Starting a Claude Code session
-2. Asking: "What Byterover skills are available?"
-3. Claude should list the installed skills
+---
+
+## Skills
+
+### 🔄 byterover-notion-sync
+
+Bidirectional knowledge synchronization between Byterover memories and Notion documentation.
+
+**Core Capabilities:**
+
+- Transform memories → Notion documentation (4 formats: implementation reports, PRDs, feature docs, architecture docs)
+- Import Notion pages → searchable memories with intelligent chunking
+- Multi-query retrieval for comprehensive context
+- Automatic format selection based on content
+
+**Architecture:**
+
+```mermaid
+graph TB
+    subgraph "Memories → Notion"
+        A[Byterover Memories] -->|Multi-query| B[Aggregate Context]
+        B -->|Format Selection| C{Document Type}
+        C -->|Timeline-based| D[Implementation Report]
+        C -->|Requirements| E[PRD]
+        C -->|Usage Guide| F[Feature Docs]
+        C -->|System Design| G[Architecture Docs]
+        D --> H[Notion Page]
+        E --> H
+        F --> H
+        G --> H
+    end
+
+    subgraph "Notion → Memories"
+        I[Notion Page] -->|Fetch| J[Analyze Structure]
+        J -->|Chunk| K[Logical Sections]
+        K -->|Format| L[Memory Templates]
+        L -->|Store| M[Byterover Memories]
+    end
+```
+
+**Example Use Cases:**
+
+```
+"Create an implementation report on the auth system from July 10-15"
+"Turn our notification discussions into a PRD"
+"Document the microservices architecture"
+"Import API documentation from Notion into memories"
+```
+
+**Documentation:**
+
+- [SKILL.md](byterover-notion-sync/SKILL.md) - Complete workflow guides
+- [references/](byterover-notion-sync/references/) - Format templates and guidelines
+
+**Workflow Overview:**
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Claude
+    participant B as Byterover
+    participant N as Notion
+
+    Note over U,N: Memories → Notion
+    U->>C: "Create implementation report"
+    C->>B: Multi-query memories
+    B-->>C: Aggregate results
+    C->>C: Select format & structure
+    C->>N: Create Notion page
+    N-->>U: Return page link
+
+    Note over U,N: Notion → Memories
+    U->>C: "Import Notion page"
+    C->>N: Fetch page content
+    N-->>C: Return structured content
+    C->>C: Chunk & format
+    C->>B: Store memories
+    B-->>U: Confirm storage
+```
 
 ---
 
 ## Usage
 
-### Quick Start
+Skills activate automatically based on your requests - no special commands needed.
 
-Once installed, skills are automatically invoked based on your requests. No special commands needed!
-
-**Example workflows**:
+**Example Workflows:**
 
 ```
-# Memories → Notion Documentation
+# Generate documentation from memories
 User: "Create an implementation report on the payment system we built last week"
-→ Claude uses byterover-notion-sync to:
-  1. Query memories about payment system
-  2. Structure as implementation report
-  3. Create Notion page with timeline
+→ Queries memories → Structures as report → Creates Notion page with timeline
 
-# Notion → Byterover Memories
+# Import documentation into memories
 User: "Import our API documentation from Notion into memories"
-→ Claude uses byterover-notion-sync to:
-  1. Fetch Notion page
-  2. Break into logical chunks
-  3. Store as searchable memories
+→ Fetches Notion page → Breaks into chunks → Stores as searchable memories
 
-# Architecture Documentation
+# Architecture documentation
 User: "Document our microservices architecture based on recent work"
-→ Claude uses byterover-notion-sync to:
-  1. Retrieve architecture-related memories
-  2. Structure as technical architecture doc
-  3. Include diagrams and design decisions
+→ Retrieves architecture memories → Structures with diagrams → Creates Notion doc
 ```
-
-### Skill-Specific Documentation
-
-Each skill includes detailed documentation in its folder:
-- **SKILL.md**: Complete workflow guides and best practices
-- **references/**: Detailed format templates and guidelines
 
 ---
 
-## Skill Development
+## Contributing
 
-### Contributing New Skills
+### Adding New Skills
 
-We welcome contributions! To add a new Byterover skill:
-
-1. **Fork this repository**
-2. **Create a new skill** following the structure:
+1. Fork this repository
+2. Create skill following this structure:
    ```
    your-skill-name/
-   ├── SKILL.md          # Required: Skill instructions and workflows
-   ├── references/       # Optional: Detailed guides and templates
+   ├── SKILL.md          # Required: Workflow instructions
+   ├── references/       # Optional: Templates and guides
    ├── scripts/          # Optional: Executable helpers
-   └── assets/           # Optional: Templates and resources
+   └── assets/           # Optional: Resources
    ```
-3. **Update this README** with skill description
-4. **Submit a pull request**
+3. Update this README with skill description
+4. Submit pull request
 
-### Skill Structure Guidelines
-
-Follow the [Claude Code Skill Creator](https://github.com/anthropics/skill-creator) guidelines:
-
-- **SKILL.md**: Include name, description, workflows, and examples
-- **References**: Detailed documentation loaded on-demand
-- **Scripts**: Executable code for deterministic tasks
-- **Assets**: Files used in output (templates, boilerplate)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
 ## Roadmap
 
-Future skills in development:
+**Planned Skills:**
 
-- **byterover-github-integration**: Sync code comments, PR discussions, and issue threads with memories
-- **byterover-meeting-notes**: Convert meeting transcripts into structured memories and action items
-- **byterover-code-knowledge**: Extract and organize code patterns, architectural decisions, and best practices
-- **byterover-research-synthesis**: Aggregate memories into research reports and literature reviews
+- **byterover-github-integration** - Sync PR discussions, code comments, and issues with memories
+- **byterover-meeting-notes** - Convert transcripts into structured memories and action items
+- **byterover-code-knowledge** - Extract code patterns, architectural decisions, and best practices
+- **byterover-research-synthesis** - Aggregate memories into research reports and literature reviews
 
-Have a skill idea? [Open an issue](https://github.com/[your-username]/byterover-skills/issues) or contribute!
-
----
-
-## Requirements
-
-- **Claude Code**: Latest version
-- **Byterover MCP Server**: Configured and running
-- Additional requirements vary by skill (e.g., Notion MCP for byterover-notion-sync)
-
----
-
-## Support & Community
-
-- **Issues**: [GitHub Issues](https://github.com/[your-username]/byterover-skills/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/[your-username]/byterover-skills/discussions)
-- **Byterover MCP**: [ngalvare/byterover-mcp](https://github.com/ngalvare/byterover-mcp)
+Have a skill idea? [Open an issue](https://github.com/RyanNg1403/byterover-skills/issues) or contribute!
 
 ---
 
@@ -184,14 +208,8 @@ Have a skill idea? [Open an issue](https://github.com/[your-username]/byterover-
 
 MIT License - see [LICENSE](LICENSE) for details.
 
----
-
 ## Acknowledgments
 
-- Built for [Claude Code](https://claude.ai/claude-code) by Anthropic
+- Built for [Claude Code](https://www.claude.com/product/claude-code) by Anthropic
 - Powered by [Byterover MCP Server](https://www.byterover.dev/)
 - Integrations with [Notion MCP](https://developers.notion.com/docs/mcp)
-
----
-
-**Made with ❤️ for better AI knowledge management**
