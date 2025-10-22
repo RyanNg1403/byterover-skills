@@ -57,7 +57,7 @@ Byterover is a powerful memory system for AI agents, allowing them to store and 
 
 1. **Clone this repository**:
    ```bash
-   git clone https://github.com/[your-username]/byterover-skills.git
+   git clone https://github.com/RyanNg1403/byterover-skills.git
    cd byterover-skills
    ```
 
